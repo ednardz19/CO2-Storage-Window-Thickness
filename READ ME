@@ -1,0 +1,7 @@
+Download both .zip + .z01 files and use winRAR to unzip data files.
+
+Data is in ESRI geodatabase format (.gdb), and includes:
+  1) an ArcMap .mxd file (I have not upgraded to ArcGIS Pro yet!)
+  2) Image map exports
+  3) Read me file with a detailed summary, calculations, description, projections, and citations 
+  (also included in this repository as the DATA SUMMARY_CITATIONS file
