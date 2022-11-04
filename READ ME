@@ -1,0 +1,95 @@
+EDIMENTARY CO2 STORAGE WINDOW THICKNESS MAP
+Created by: Edna Rodriguez Calzado
+Gulf Coast Carbon Center, 2022
+Metadata can also be found under 'Item Description' for each feature file. 
+Version 2.0
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+SUMMARY
+
+The Sedimentary Storage Window Thickness (SWT) map delineates CO2 storage potential for all U.S. sedimentary formations based on the following boundaries: 
+	1) the top of the storage window is limited at 750 meters below the water table or deeper, as CO2 needs to be stored deeper than this depth to maintain its supercritical fluid state, and 
+	2) the bottom of the storage window is set at the top of the Precambrian or Mesozoic basement rocks.
+
+The Sedimentary Storage Window Thickness (SWT) map is the result of the compilation and editing of preexisting spatial data, listed below. 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+CALCULATIONS
+
+SWT = depth to bottom of storage window - depth to top of storage window
+	+ = SWT
+	- = No SWT (B3.)
+
+Bottom of storage window = US-wide sediment thickness data (A1.)
+Top of storage window = Depth to top of groundwater data (A2.) + 750m 
+
+
+Data relative to land surface or sea floor. 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Lower 48 States:
+Projection: Transverse Mercator
+Coordinate System: GCS_North_American_1983
+Datum: North American 1983
+
+Alaska State:
+Projection: Mercator Auxiliary Sphere
+Coordinate System: WGS 1984 
+Datum: WGS 1984 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+DESCRIPTION
+
+A - Storage Window Thickness
+
+A1. US-wide sediment thickness map (in meters)
+	Three sources delineating different regions in the US (Western US, Middle US, Eastern Coast US) were utilized and modified to create a cohesive, national-scale sediment thickness map. 
+	To merge all three sources, contour lines were created from each data source, and later on rasterized utilizing ArcGIS’s topo to raster interpolation tool. The Western US sediment thickness map covers the Western coast 
+	states and continues on east until reaching the Precambrian basement craton edge (Shah et al. 2018). 
+
+	The Western US thickness map covers sediment thickness up to the top of the Mesozoic basement, unlike the Middle and Eastern Coast US sources, where sedimentary thickness extends to the Precambrian basement.The Middle 
+	US depth to Precambrian basement (Marshak et al. 2017) is a representation of the Great Unconformity for the cratonic platform of the United States. 
+
+	As for the Eastern Coast US (Laske and Masters, 1997), the contour lines generated from their data were edited to not overlap data from the Middle US. 
+
+A2. Depth to top of groundwater (in meters)
+	The groundwater depth data utilized for this project is a two-layer global groundwater model utilizing a combination of the hydrological model PCR-GLOBWV and a groundwater model using MODFLOW (De Graaf et al 2017). 
+	The model is presented in monthly time-steps with December 2015 as the last iteration of the model. Thus, December 2015 was chosen to represent the depth to top of groundwater.The global groundwater model is split into
+	two layers, Layer 1 and Layer 2. Layer 2 is described as the top of the confining geological layer, while Layer 1 is the top of the confined aquifer underneath it. They delineated the layers based on grain sizes of
+	unconsolidated sediments (GLiM). Since De Graaf et al. defines Layer 1 to include top of “partially” confined aquifers as well (meaning there is still transmissivity through Layer 1 to Layer 2), this study utilizes Layer 
+	2 to represent depth to top of groundwater. 
+
+A3. Continental Digital Elevation Models (DEM) (in meters)
+	Continental Digital Elevation Models from both the Lower 48 states (USGS 3DEP 2022) and Alaska (Porter et al. 2018) were utilized to edit spatial datasets for this work. For instance, the Middle US original database 
+	(Marshak et al. 2017) provided depth to top of Precambrian basement relative to mean sea level, so 3DEP DEM data was needed to create an accurate sediment thickness map of this data source. 
+
+
+B - No Storage Window Thickness
+
+B1. Geologic Constraints
+	To provide a more accurate storage window thickness, it is necessary to exclude known types of rock that do not have the physical properties (i.e. lack of porosity of permeability in the formation)
+	to store injected CO2. Such rocks include Precambrian outcrops (lower 48: Schruben et al 1997, Alaska: Wilson et al 2015), metamorphic rocks, and glaciers (Garrity and Soller, 2009). The citations in this section refer to 
+	the source of spatial data of these types of rocks. As stated earlier, storage in igneous rock is not included in the scope of this work, and thus has been included in the geologic constraint criteria (source: Garrity and Soller, 2009)
+
+B2. Topographic Constraints
+	When considering storage, it is also necessary to exclude areas of steep elevation (i.e. mountain ranges) where storage infrastructure construction and logistics are complicated. For the conterminous U.S.,
+	this work has only highlighted the Appalachian and Ouachita Mountain ranges (spatial data taken from Marshak et al. 2017). As for the state of Alaska, given the rugged, steep highland and low valley terrain across the entire state, 
+	DEM data (Porter et al. 2018) was utilized to filter out any areas with an elevation higher than 1000 meters. The results of this DEM filter show the extent of all three main mountain ranges in Alaska.
+
+B3. No Storage based on Storage Window Thickness boundaries
+	In some areas of the U.S., particularly in the Western States, there is a lack of sufficient sedimentary thickness to successfully store CO2 underground. As previously mentioned, CO2 needs to be stored deeper than 
+	750 m below the water table to maintain its supercritical fluid state. If there is less than 750 meters of sediment thickness, then the top window is deeper than the total extent, and thus no storage potential is available in this location.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+CITATIONS
+
+1. Burke, L.A., Kinney, S.A., Dubiel, R.A., Pitman, Janet, 2012, Regional map of the 0.70 psi/ft pressure gradient and development of the regional geopressure- gradient model of onshore and offshore Gulf of Mexico, GCAGS.
+2. Inge E.M. de Graaf, Rens L.P.H. van Beek, Tom Gleeson, Nils Moosdorf, Oliver Schmitz, Edwin H. Sutanudjaja, Marc F.P. Bierkens, A global-scale two-layer transient groundwater model: Development and application to groundwater depletion, Advances in Water Resources, Volume 102, 2017, Pages 53-67, ISSN 0309-1708, https://doi.org/10.1016/j.advwatres.2017.01.011.
+3. Garrity, C.P., and Soller, D.R., 2009, Database of the Geologic Map of North America; adapted from the map by J.C. Reed, Jr. and others (2005): U.S. Geological Survey Data Series 424 by Roger Palmer for the Esri TESS lessons
+4. General Bathymetric Chart of the Oceans (GEBCO), 2021, Gridded Bathymetry Data: Global Ocean and Land Terrains Models, International Hydrographic Organization, https://www.gebco.net/data_and_products/gridded_bathymetry_data/
+5. Laske, G. and Masters, G., 1997, A Global Digital Map of Sediment Thickness, EOS Trans. AGU, 78, F483.
+6. Porter, C.; Morin, P., Howat, I., Noh, M-J, Bates, Brian; Peterman, Kenneth; Keesey, Scott; Schlenk, Matthew; Gardiner, Judith; Tomko, Karen; Willis, Michael; Kelleher, Cole; Cloutier, Michael; Husby, Eric; Foga, Steven; Nakamura, Hitomi; Platson, Melisa; Wethington, Michael, Jr.; Williamson, Cathleen; Bauer, Gregory; Enos, Jeremy; Arnold, Galen; Kramer, William; Becker, Peter; Doshi, Abhijit; D’Souza, Cristelle; Cummens, Pat; Laurier, Fabien; Bojesen, Mikkel, 2018, “ArcticDEM”, https://doi.org/10.7910/DVN/OHHUKH, Harvard Dataverse, V1, September 15th 2022.
+7. Shah, A.K, and Boyd, O.S., 2018, Depth to basement and thickness of unconsolidated sediments for the western United States—Initial estimates for layers of the U.S. Geological Survey National Crustal Model: U.S. Geological Survey Open-File Report 2018–1115, 13 p., https://doi.org/10.3133/ofr20181115
+8. Stephen Marshak, Stefanie Domrois, Curtis Abert, Timothy Larson, Gary Pavlis, Michael Hamburger, Xiaotao Yang, Hersh Gilbert, and Chen Chen, 2017, The basement revealed: Tectonic insight from a digital elevation model of the Great Unconformity, USA, cratonic platform: Geology, doi:10.1130/G38875.1. GSA Data Repository 2017115.
+9. Thomas, W.A., 1993 Low-angle detachment geometry of  the  late  Precambrian- Cambrian Appalachian-Ouachita rifted margin of southeastern North America, Geology, v. 24, p. 921-924, https://doi.org/10.1130/0091-7613(1993)021<0921:LADGOT>2.3.CO;2
+10. U.S. Geological Survey, 2022, 3D Elevation program (3DEP) Bare Earth DEM Dynamic Service, ArcGIS Online Services, medatadata available at https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer
+11. Wilson, F.H., Hults, C.P., Mull, C.G, and Karl, S.M, compilers, 2015, Geologic map of Alaska: U.S. Geological Survey Scientific Investigations Map 3340, pamphlet 196 p., 2 sheets, scale 1:1,584,000, https://doi.org/10.3133/sim3340.
